@@ -11,7 +11,7 @@
 
 <body class="bg-[#f5eee6] min-h-screen">
 
-    <!-- NAVBAR -->
+   <!-- NAVBAR -->
     <nav class="flex items-center justify-between px-6 md:px-12 py-5 border-b border-[#d8c3a5]">
 
         <!-- LOGO -->
@@ -27,18 +27,18 @@
         <!-- DESKTOP MENU -->
         <div class="hidden md:flex items-center gap-10 text-[#b57c4d] text-sm">
 
-            <a href="#" class="hover:text-black transition">
+            <a href="/dashboard" class="hover:text-black transition">
                 Home
             </a>
 
-            <a href="menu" class="hover:text-black transition">
+            <a href="/menu" class="hover:text-black transition">
                 Menu
             </a>
 
-            <a href="#" class="hover:text-black transition">
+            <a href="/rekomendasi" class="hover:text-black transition">
                 Rekomendasi
             </a>
-
+ 
             <a href="#" class="hover:text-black transition">
                 History
             </a>
@@ -71,15 +71,15 @@
 
         <div class="flex flex-col gap-4 text-[#b57c4d]">
 
-            <a href="#" class="hover:text-black transition">
+            <a href="/dashboard" class="hover:text-black transition">
                 Home
             </a>
 
-            <a href="#" class="hover:text-black transition">
+            <a href="/menu" class="hover:text-black transition">
                 Menu
             </a>
 
-            <a href="#" class="hover:text-black transition">
+            <a href="/rekomendasi" class="hover:text-black transition">
                 Rekomendasi
             </a>
 

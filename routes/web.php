@@ -14,6 +14,17 @@ Route::get('/dashboard', function () {
 
 Route::get('/menu', [ProductController::class, 'index'])->name('menu');
 
+Route::get('/history', function () {
+    return view('history');
+})->name('history');
+
+Route::get('/rekomendasi', function () {
+    return view('rekomendasi');
+})->name('rekomendasi');
+
+Route::get('/pesanan', function () {
+    return view('pesanan');
+})->name('pesanan');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
