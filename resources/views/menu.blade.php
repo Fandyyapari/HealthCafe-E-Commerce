@@ -94,11 +94,24 @@
                     </button>
 
                     <!-- ORDER -->
-                    <button class="w-10 h-10 bg-[#b7d63d] rounded-full text-white hover:bg-lime-500 transition">
+                    <form action="/cart/add/' .
+                    $product->id .
+                    '" method="POST">
+
+                        ' .
+                    csrf_field() .
+                    '
+
+                    <button
+                    class="w-10 h-10 bg-[#b7d63d] rounded-full text-white hover:bg-lime-500 transition">
 
                         +
 
                     </button>
+
+</form>
+
+                </form>
 
                 </div>
 
@@ -110,7 +123,7 @@
         <div id="modal-' .
                     $product->id .
                     '"
-        class="fixed inset-0 bg-black/50 hidden justify-center items-center z-50 p-6">
+            class="fixed inset-0 bg-black/50 hidden justify-center items-center z-50 p-6">
 
             <div class="bg-white rounded-[30px] md:rounded-[40px] max-w-4xl w-full overflow-y-auto max-h-[90vh] relative">
 
@@ -200,7 +213,7 @@
     @endphp
 
     <!-- NAVBAR -->
-    <nav class="flex items-center justify-between px-6 md:px-12 py-5 border-b border-[#d8c3a5] bg-[#f5eee6]">
+    <nav class="flex items-center justify-between px-6 md:px-12 py-5 border-b border-[#d8c3a5]">
 
         <!-- LOGO -->
         <div class="flex items-center gap-3">
@@ -226,8 +239,8 @@
             <a href="/rekomendasi" class="hover:text-black transition">
                 Rekomendasi
             </a>
- 
-            <a href="#" class="hover:text-black transition">
+
+            <a href="/history" class="hover:text-black transition">
                 History
             </a>
 
@@ -236,19 +249,42 @@
         <!-- RIGHT SIDE -->
         <div class="flex items-center gap-4">
 
-            <!-- BUTTON -->
-            <button class="hidden md:block bg-[#b57c4d] text-white px-5 py-2 rounded-full hover:opacity-90 transition">
+            @auth
 
-                PESAN
+                <span class="hidden md:block text-[#4d4d2e] font-semibold">
 
-            </button>
+                    Hi, {{ Auth::user()->name }}
 
-            <!-- HAMBURGER -->
-            <button id="menu-btn" class="md:hidden text-3xl text-[#b57c4d]">
+                </span>
 
-                ☰
+                <a href="/cart"
+                    class="hidden md:block bg-[#b7d63d] hover:bg-lime-500 text-white px-5 py-2 rounded-full transition">
 
-            </button>
+                    Cart
+
+                </a>
+
+                <form method="POST" action="{{ route('logout') }}">
+
+                    @csrf
+
+                    <button
+                        class="hidden md:block bg-red-400 hover:bg-red-500 text-white px-5 py-2 rounded-full transition">
+
+                        Logout
+
+                    </button>
+
+                </form>
+            @else
+                <a href="/login"
+                    class="hidden md:block bg-[#b57c4d] text-white px-5 py-2 rounded-full hover:opacity-90 transition">
+
+                    Login
+
+                </a>
+
+            @endauth
 
         </div>
 
@@ -271,7 +307,7 @@
                 Rekomendasi
             </a>
 
-            <a href="/history" class="hover:text-black transition">
+            <a href="#" class="hover:text-black transition">
                 History
             </a>
 
@@ -284,9 +320,6 @@
         </div>
 
     </div>
-        
-
-    </nav>
 
     <!-- HEADER -->
     <section class="text-center py-16 px-6">
@@ -306,7 +339,7 @@
 
     </section>
 
-    
+
 
     {{ renderSection('Healthy Coffee Series', $coffee, 'coffe-icon.jpeg') }}
 
@@ -445,6 +478,17 @@
         </div>
 
     </footer>
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+
+            mobileMenu.classList.toggle('hidden');
+
+        });
+    </script>
 
 </body>
 

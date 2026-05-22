@@ -11,7 +11,7 @@
 
 <body class="bg-[#f5eee6] min-h-screen">
 
-   <!-- NAVBAR -->
+    <!-- NAVBAR -->
     <nav class="flex items-center justify-between px-6 md:px-12 py-5 border-b border-[#d8c3a5]">
 
         <!-- LOGO -->
@@ -38,8 +38,8 @@
             <a href="/rekomendasi" class="hover:text-black transition">
                 Rekomendasi
             </a>
- 
-            <a href="#" class="hover:text-black transition">
+
+            <a href="/history" class="hover:text-black transition">
                 History
             </a>
 
@@ -48,12 +48,35 @@
         <!-- RIGHT SIDE -->
         <div class="flex items-center gap-4">
 
-            <!-- BUTTON -->
-            <button class="hidden md:block bg-[#b57c4d] text-white px-5 py-2 rounded-full hover:opacity-90 transition">
+            @auth
 
-                PESAN
+                <span class="hidden md:block text-[#4d4d2e] font-semibold">
 
-            </button>
+                    Hi, {{ Auth::user()->name }}
+
+                </span>
+
+                <form method="POST" action="{{ route('logout') }}">
+
+                    @csrf
+
+                    <button
+                        class="hidden md:block bg-red-400 hover:bg-red-500 text-white px-5 py-2 rounded-full transition">
+
+                        Logout
+
+                    </button>
+
+                </form>
+            @else
+                <a href="/login"
+                    class="hidden md:block bg-[#b57c4d] text-white px-5 py-2 rounded-full hover:opacity-90 transition">
+
+                    Login
+
+                </a>
+
+            @endauth
 
             <!-- HAMBURGER -->
             <button id="menu-btn" class="md:hidden text-3xl text-[#b57c4d]">
@@ -86,6 +109,7 @@
             <a href="#" class="hover:text-black transition">
                 History
             </a>
+
 
             <button class="bg-[#b57c4d] text-white px-5 py-2 rounded-full mt-3">
 
