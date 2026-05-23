@@ -439,7 +439,7 @@
                 class="bg-white rounded-[30px] md:rounded-[40px] max-w-4xl w-full overflow-y-auto max-h-[90vh] relative">
 
                 <!-- CLOSE -->
-                <button onclick="closeModal({{ $product->id }})"
+                <button onclick="closeModal('{{ $product->id }}')"
                     class="absolute top-5 right-5 text-3xl text-[#b57c4d] z-50">
 
                     ✕
@@ -499,12 +499,13 @@
 
         </div>
     @endforeach
+    <script id="productsData" type="application/json">{!! json_encode($products, JSON_HEX_TAG|JSON_HEX_AMP|JSON_HEX_APOS|JSON_HEX_QUOT) !!}</script>
     <script>
         const totalQ = 8;
         let current = 1;
         let answers = {};
         const assetBase = "{{ asset('images') }}";
-        const menuDB = @json($products).map(item => ({
+        const menuDB = JSON.parse(document.getElementById('productsData').textContent).map(item => ({
             ...item,
             tags: item.tags ? item.tags.split(',') : [],
             badges: item.badges ? item.badges.split(',') : []
@@ -583,18 +584,18 @@
                     <div class="menu-card-cal mb-3 text-sm text-[#7a6a58]">📊 ${m.cal}</div>
                     <div class="menu-card-price mb-4 text-lg font-bold text-[#b57c4d]">
                             Rp ${Number(m.price).toLocaleString('id-ID')}
-                    <                               /div>
+                    </div>
                     <div class="flex gap-2 mt-5">
 
                 <!-- VIEW -->
                     <button
-                        onclick="openModal(${m.id})"                        
+                        onclick="openModal(${m.id})"
                         class="flex-1 border border-[#b57c4d] text-[#b57c4d] text-sm py-3 rounded-full hover:bg-[#b57c4d] hover:text-white transition">
                             View
                     </button>
 
                 <!-- ADD -->
-                <form action="/cart/add/{{ $product->id }}" method="POST">
+                <form action="/cart/add/${m.id}" method="POST">
 
                 @csrf
 

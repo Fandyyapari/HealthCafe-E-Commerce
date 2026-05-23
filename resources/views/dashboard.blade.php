@@ -250,7 +250,7 @@
             <!-- CARD 2 -->
             <div class="bg-white rounded-3xl overflow-hidden shadow-lg hover:scale-105 transition duration-300">
 
-                <img src="{{ asset('images/honney cinamon coffe.jpeg') }}" class="h-64 w-full object-cover">
+                <img src="{{ asset('images/honey cinamon coffe.jpeg') }}" class="h-64 w-full object-cover">
 
                 <div class="p-6">
 
